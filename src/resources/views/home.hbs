@@ -1,1 +1,38 @@
-<h1>HOME PAGE</h1>
+<div class="mt-4">
+    <div class="row">
+        {{#each courses}}
+        <div class="col-sm-6 col-lg-4">
+            <div class="card">
+                <a href="/courses/{{this.slug}}">
+                    <img src="{{this.img}}" class="card-img-top" alt="...">
+                </a>
+                <div class="card-body">
+                    <a href="/courses/{{this.slug}}">
+                        <h5 class="card-title">{{this.name}}</h5>
+                    </a>
+                    <p class="card-text">{{this.description}}</p>
+                    <a href="/courses/{{this.slug}}" class="btn btn-primary">Go</a>
+                </div>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+
+    <nav class="mt-4 d-flex justify-content-center" aria-label="Page navigation example">
+        <ul class="pagination">
+            {{{previousCheck current}}}
+            {{#pagination current pages 6}}
+                {{#each pages}}
+                    {{#if isCurrent}}
+                        <li class="page-item active"><a class="page-link" href="?page={{page}}">{{page}}</a></li>
+                    {{/if}}
+                    {{#unless isCurrent}}
+                        <li class="page-item"><a class="page-link" href="?page={{page}}">{{page}}</a></li>
+                    {{/unless}}
+                {{/each}}
+            {{/pagination}}
+            {{{nextCheck current pages}}}
+        </ul>
+    </nav>
+</div>
+
