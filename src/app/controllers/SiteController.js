@@ -7,7 +7,8 @@ class SiteController {
         const page = parseInt(req.query.page) || 1; 
         const perPage = 6;
 
-        Promise.all([Course.find({owner:res.locals.user}).skip((perPage*page)-perPage).limit(perPage), Course.countDocuments({owner:res.locals.user})])
+        Promise.all([Course.find({owner:res.locals.user}).skip((perPage*page)-perPage).limit(perPage), 
+            Course.countDocuments({owner:res.locals.user})])
             .then(([courses, count]) => 
                 res.render('home', {
                     courses: multipleMongooseToObject(courses),
@@ -21,9 +22,28 @@ class SiteController {
     }
         
     // [GET] /search
-    search(req, res) {
+    getSearch(req, res) {
         res.render('search');
     }
+
+    // [POST] /seaerch
+    postSearch(req, res, next) {
+        const page = parseInt(req.query.page) || 1; 
+        const perPage = 6;
+
+        Promise.all([Course.find({owner:res.locals.user, $text: {$search: req.body.courseName} }).skip((perPage*page)-perPage).limit(perPage), 
+            Course.countDocuments({owner:res.locals.user, $text: {$search: req.body.courseName} })])
+            .then(([courses, count]) => 
+                res.render('search', {
+                    courses: multipleMongooseToObject(courses),
+                    current: page,
+                    pages: Math.ceil(count / perPage),
+                    count,
+                })
+            )
+            .catch(next);
+    }
+
 }
 
 module.exports = new SiteController();

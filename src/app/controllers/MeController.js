@@ -5,8 +5,9 @@ class MeController {
 
     // [GET] /me/stored/courses
     storedCourses(req, res, next) {
-
-        let courseQuery = Course.find({owner:res.locals.user});
+        const page = parseInt(req.query.page) || 1; 
+        const perPage = 6;
+        let courseQuery = Course.find({owner:res.locals.user}).skip((perPage*page)-perPage).limit(perPage);
 
 
         if (req.query.hasOwnProperty('_sort')) {
@@ -14,11 +15,14 @@ class MeController {
                 [req.query.column]: req.query.type
             });
         };
-        Promise.all([courseQuery, Course.countDocumentsDeleted({owner: res.locals.user})])
-            .then(([courses, deletedCount]) => 
+        Promise.all([courseQuery, Course.countDocuments({owner:res.locals.user}), Course.countDocumentsDeleted({owner: res.locals.user})])
+            .then(([courses, count, deletedCount]) => 
                 res.render('me/stored-courses', {
                     deletedCount,
+                    count,
                     courses: multipleMongooseToObject(courses),
+                    current: page,
+                    pages: Math.ceil(count / perPage),
                 })
             )
             .catch(next);
@@ -26,9 +30,15 @@ class MeController {
 
     // [GET] /me/trash/courses
     trashCourses(req, res, next) {
-        Course.findDeleted({owner: res.locals.user})
-            .then(courses => res.render('me/trash-courses', {
+        const page = parseInt(req.query.page) || 1; 
+        const perPage = 6;
+
+        Promise.all([Course.findDeleted({owner: res.locals.user}).skip((perPage*page)-perPage).limit(perPage), Course.countDocumentsDeleted({owner:res.locals.user})])
+            .then(([courses, deletedCount]) => res.render('me/trash-courses', {
                 courses: multipleMongooseToObject(courses),
+                deletedCount,
+                current: page,
+                pages: Math.ceil(deletedCount / perPage),
             }))
             .catch(next);
     }

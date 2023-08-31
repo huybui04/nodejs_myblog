@@ -68,7 +68,24 @@
         </tbody>
     </table>
 </form>
-
+{{#if count}}
+<nav class="mt-4 d-flex justify-content-center" aria-label="Page navigation example">
+        <ul class="pagination">
+            {{{previousCheck current}}}
+            {{#pagination current pages 6}}
+                {{#each pages}}
+                    {{#if isCurrent}}
+                        <li class="page-item active"><a class="page-link" href="?page={{page}}">{{page}}</a></li>
+                    {{/if}}
+                    {{#unless isCurrent}}
+                        <li class="page-item"><a class="page-link" href="?page={{page}}">{{page}}</a></li>
+                    {{/unless}}
+                {{/each}}
+            {{/pagination}}
+            {{{nextCheck current pages}}}
+        </ul>
+</nav>
+{{/if}}
 {{!-- Confirm delete --}}
 
 <div class="modal" id="delete-course-modal" tabindex="-1">

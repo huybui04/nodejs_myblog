@@ -1,21 +1,26 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+<nav class="navbar navbar-expand-lg sticky-top">
   <div class="container">
     <a class="navbar-brand" href="/">Home</a>
 
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav ml-auto">
           {{#if user}}
           <li class="nav-item dropdown">
-            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <img src="https://yt3.ggpht.com/yti/AOXPAcWKbSYL3nm-DMnMjTh6AQGzxCsQVCpo6jtbJ4G_-g=s108-c-k-c0x00ffffff-no-rj" alt="" class="user-avatar">
-              Huy Bê Quy
             </button>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="/courses/create">Thêm</a></li>
+              <div class="user-menu">
+                <img src="https://yt3.ggpht.com/yti/AOXPAcWKbSYL3nm-DMnMjTh6AQGzxCsQVCpo6jtbJ4G_-g=s108-c-k-c0x00ffffff-no-rj" alt="" class="user-avatar show">   
+                <div class="user-menu-info">{{user.email}}</div>
+              </div>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="">Trang cá nhân</a></li>              
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="/courses/create">Thêm khóa học</a></li>
               <li><a class="dropdown-item" href="/me/stored/courses">Khóa học của tôi</a></li>
               <li><hr class="dropdown-divider"></li>
               <li><a class="dropdown-item" href="/auth/logout">Đăng xuất</a></li>

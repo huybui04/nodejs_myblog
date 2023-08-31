@@ -21,6 +21,9 @@ const Course = new Schema({
     timestamps : true,
 });
 
+// Text Index
+Course.index( { "name": "text" } )
+
 // Add plugin
 mongoose.plugin(slug);
 Course.plugin(mongooseDelete, { 

@@ -4,7 +4,22 @@
         <a href="/me/stored/courses">Danh sách khóa học</a>
     </div>
 
-    <table class="table">
+    <div class="mt-4 d-flex align-items-center">
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="checkbox-all">
+            <label class="form-check-label" for="checkbox-all">
+                Chọn tất cả
+            </label>
+        </div>
+
+        <select class="form-control form-control-sm checkbox-select-all-options" name="action" required="required">
+            <option value="">--Hành động--</option>
+            <option value="delete">Xóa</option>
+        </select>
+
+        <button class="btn btn-primary btn-sm check-all-sbumit-btn" disabled="disabled">Thực hiện</button>
+    </div>  
+    <table class="table mt-2">
         <thead>
             <tr>
                 <th scope="col">STT</th>
@@ -17,6 +32,11 @@
         <tbody>
             {{#each courses}}
                 <tr>
+                    <td>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" name="courseIds[]" value="{{this._id}}">
+                        </div> 
+                    </td>                    
                     <th scope="row">{{sum @index 1}}</th>
                     <td>{{this.name}}</td>
                     <td>{{this.level}}</td>
@@ -39,7 +59,24 @@
         </tbody>
     </table>
 </div>
-
+{{#if deletedCount}}
+<nav class="mt-4 d-flex justify-content-center" aria-label="Page navigation example">
+        <ul class="pagination">
+            {{{previousCheck current}}}
+            {{#pagination current pages 6}}
+                {{#each pages}}
+                    {{#if isCurrent}}
+                        <li class="page-item active"><a class="page-link" href="?page={{page}}">{{page}}</a></li>
+                    {{/if}}
+                    {{#unless isCurrent}}
+                        <li class="page-item"><a class="page-link" href="?page={{page}}">{{page}}</a></li>
+                    {{/unless}}
+                {{/each}}
+            {{/pagination}}
+            {{{nextCheck current pages}}}
+        </ul>
+</nav>
+{{/if}}
 {{!-- Confirm delete --}}
 
 <div class="modal" id="delete-course-modal" tabindex="-1">
@@ -91,7 +128,7 @@
             var courseId = $(this).data('id');
             restoreForm.action = '/courses/' + courseId + '/restore?_method=PATCH';
             restoreForm.submit();
-        })
+        })      
     });
 
 </script>

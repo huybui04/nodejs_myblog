@@ -6,13 +6,50 @@
     font-family: 'Quicksand', sans-serif;
 }
 
+body {
+    background: #fafafa;
+}
+
+// Nav
+.navbar {
+    --height: 66px;
+    align-items: center;
+    background-color: #fff;
+    border-bottom: 1px solid #e8ebed;
+    display: flex;
+    font-size: 1.4rem;
+    height: var(--height);
+    left: 0;
+    padding: 0 28px;
+    position: sticky;
+    right: 0;
+    top: 0;
+    z-index: 20;
+}
+
 .user-avatar {
-    width: 28px;
-    height: 28px;
+    width: 35px;
+    height: 35px;
     border-radius: 50%;
     margin-right: 4px;
 }
 
+.user-avatar.show {
+    width: 50px;
+    height: 50px;
+}
+
+.user-menu {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.dropdown-menu.show {
+    inset: 52px 0px auto auto;
+    box-shadow: 0 -4px 32px rgba(0,0,0,.2);
+    transition: all .3s ease-in-out;
+}
 
 .btn-link-auth {
     border-radius: 36px;
@@ -39,10 +76,71 @@
 }
 
 
-body {
-    background: #fafafa;
+
+// SIde bar 
+.app_sidebar-wrap {
+    position: fixed;
+    left: 0;
+    top: 65px;
+    background-color: #fff;
 }
 
+.sidebar_wrap {
+    --width: 96px;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+    left: 0;
+    padding: 0 8px;
+    position: sticky;
+    top: 74px;
+    width: var(--width);
+    z-index: 8;
+    height: 100vmax;
+}
+.sidebar_list {
+    padding-left: 0;
+    list-style: none;
+    justify-content: center;
+}
+
+.sidebar_item  {
+    align-items: center;
+    background-color: #fff;
+    border-radius: 16px;
+    color: #404040;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    height: 72px;
+    justify-content: center;
+    margin-top: 4px;
+    width: 72px;
+    margin-bottom: 5px;
+}
+
+.sidebar_item.active {
+    background-color: #e8ebed;
+    color: #1a1a1a;
+}
+
+.sidebar_item:hover {
+    background-color: #f5f5f5;
+    color: #1a1a1a;
+}
+
+.sidebar_item span {
+    font-size: 14px;
+    font-weight: 600;
+    margin-top: 5px;
+}
+
+// Home
+.home_wrapper {
+    overflow: hidden;
+    padding: 0 44px 74px;
+}
 
 // Auth form
 .form-auth {
@@ -92,3 +190,93 @@ body {
     font-weight: bold;
 }
 
+// footer 
+.footer-basic {
+    padding:40px 0;
+    background-color:#ffffff;
+    color:#4b4c4d;
+    // background-color: #181821;
+    // color: #a9b3bb;
+    // overflow: hidden;
+    // padding: 68px 0 40px;
+  }
+  
+.footer-basic ul {
+    padding:0;
+    list-style:none;
+    text-align:center;
+    font-size:18px;
+    line-height:1.6;
+    margin-bottom:0;
+}
+  
+.footer-basic li {
+    padding:0 10px;
+}
+  
+.footer-basic ul a {
+    color:inherit;
+    text-decoration:none;
+    opacity:0.8;
+}
+  
+.footer-basic ul a:hover {
+    opacity:1;
+}
+  
+.footer-basic .social {
+    text-align:center;
+    padding-bottom:25px;
+}
+  
+.footer-basic .social > a {
+    font-size:24px;
+    width:40px;
+    height:40px;
+    line-height:40px;
+    display:inline-block;
+    text-align:center;
+    border-radius:50%;
+    border:1px solid #ccc;
+    margin:0 8px;
+    color:inherit;
+    opacity:0.75;
+  }
+  
+.footer-basic .social > a:hover {
+    opacity:0.9;
+}
+  
+.footer-basic .copyright {
+    margin-top:15px;
+    text-align:center;
+    font-size:13px;
+    color:#aaa;
+    margin-bottom:0;
+}
+
+// Scroll bar
+::-webkit-scrollbar {
+    width: 12px;
+    height: 4px;
+}
+
+::-webkit-scrollbar-track {
+    border-radius: 10px;
+    background: rgba(0,0,0,0.1);
+    border: 1px solid #ccc;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background: linear-gradient(left, #fff, #e4e4e4);
+    border: 1px solid #aaa;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #fff;
+}
+
+::-webkit-scrollbar-thumb:active{
+    background: linear-gradient(left, #22ADD4, #1E98BA);
+}
