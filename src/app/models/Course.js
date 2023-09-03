@@ -27,8 +27,8 @@ Course.index( { "name": "text" } )
 // Add plugin
 mongoose.plugin(slug);
 Course.plugin(mongooseDelete, { 
-    deletedAt: true,
     overrideMethods: 'all', 
+    deletedAt: true,
 });
 
 module.exports = mongoose.model('Course', Course);

@@ -130,26 +130,25 @@
             courseId = button.data('id');
         });
 
+        // When delete course btn clicked
         btnDeleteCourse.onclick = function () {
             deleteForm.action = '/courses/' + courseId + '?_method=DELETE';
             deleteForm.submit();
         }
 
-
+        // Checkbox all changed
         checkboxAll.change(function () {
             var isCheckedAll = $(this).prop('checked');
             courseItemCheckbox.prop('checked', isCheckedAll);
             renderCheckAllSubmitBtn();
         })
 
+        // Course item checkbox changed
         courseItemCheckbox.change(function () {
             var isCheckedAll =  courseItemCheckbox.length === $('input[name="courseIds[]"]:checked').length;
             checkboxAll.prop('checked', isCheckedAll);
             renderCheckAllSubmitBtn();
         })
-
-        // checkAllBtn clicked
-
 
         // Rerender
         function renderCheckAllSubmitBtn() {

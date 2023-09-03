@@ -1,5 +1,6 @@
 const Course = require('../models/Course');
 const { multipleMongooseToObject, mongooseToObject } = require('../../ulti/mongoose');
+const { TRUE } = require('node-sass');
 
 class MeController {
 
@@ -15,7 +16,7 @@ class MeController {
                 [req.query.column]: req.query.type
             });
         };
-        Promise.all([courseQuery, Course.countDocuments({owner:res.locals.user}), Course.countDocumentsDeleted({owner: res.locals.user})])
+        Promise.all([courseQuery, Course.countDocuments({owner:res.locals.user}), Course.countDocumentsWithDeleted( {owner: res.locals.user, deleted: true} )])
             .then(([courses, count, deletedCount]) => 
                 res.render('me/stored-courses', {
                     deletedCount,
@@ -32,8 +33,8 @@ class MeController {
     trashCourses(req, res, next) {
         const page = parseInt(req.query.page) || 1; 
         const perPage = 6;
-
-        Promise.all([Course.findDeleted({owner: res.locals.user}).skip((perPage*page)-perPage).limit(perPage), Course.countDocumentsDeleted({owner:res.locals.user})])
+        Promise.all([Course.findWithDeleted( {owner: res.locals.user, deleted: true} ).skip((perPage*page)-perPage).limit(perPage), 
+            Course.countDocumentsWithDeleted( {owner:res.locals.user, deleted: true})])
             .then(([courses, deletedCount]) => res.render('me/trash-courses', {
                 courses: multipleMongooseToObject(courses),
                 deletedCount,

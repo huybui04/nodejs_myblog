@@ -10,6 +10,18 @@ body {
     background: #fafafa;
 }
 
+//
+.home_wrapper {
+    min-height: 100vh;
+}
+
+.empty-display {
+    width: -webkit-fill-available;
+    justify-content: center;
+    display: flex;
+    margin-top: 10%;
+}
+
 // Nav
 .navbar {
     --height: 66px;
@@ -128,6 +140,7 @@ body {
 .sidebar_item:hover {
     background-color: #f5f5f5;
     color: #1a1a1a;
+    text-decoration: none;
 }
 
 .sidebar_item span {
