@@ -1,0 +1,56 @@
+<form class="form-auth mt-4 mb-5" name="login-form">
+    <h2>Reset</h2>
+    <div class="password inform"></div>
+    <label for="password">Password</label>
+    <input type="password" name="password" required>
+    <div class="password error"></div>
+    <label for="confirmPassword">Confirmpassword</label>
+    <input type="password" name="confirmPassword" required>
+    <div class="confirmPassword error"></div>        
+    <button class="btn-auth-form">Send</button>
+</form>
+
+<script>
+    const form = document.querySelector('form');
+    const passwordError = document.querySelector('.password.error');
+    const confirmPasswordError = document.querySelector('.confirmPassword.error');
+    const passwordInform = document.querySelector('.password.inform');
+
+    form.addEventListener('submit', async function (e) {
+        e.preventDefault();
+
+        // reset errors
+        passwordError.textContent = '';
+        confirmPasswordError.textContent = '';
+        passwordInform.textContent = '';
+
+        // get values
+        const password = form.password.value;
+        const confirmPassword = form.confirmPassword.value;
+
+        if(password != confirmPassword) {
+            confirmPasswordError.textContent = 'Password not match';
+            return;
+        }
+
+        try {
+            const res = await fetch('/auth/reset/:id/:token', { 
+                method: 'PATCH', 
+                body: JSON.stringify({ password, confirmPassword }),
+                headers: {'Content-Type': 'application/json'}
+            });
+            const data = await res.json();
+            console.log(data);
+            if (data.errors) {
+                passwordInform.textContent = 'Token is invalid or has expired';
+                passwordError.textContent = data.errors.password;
+            }
+            if(data.email) {
+                passwordInform.textContent = 'Password was changed';
+            }
+        }
+        catch (err) {
+            console.log(err);
+        }
+    });
+</script>

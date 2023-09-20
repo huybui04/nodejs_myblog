@@ -121,6 +121,10 @@ app.engine('hbs', engine({
     
       return options.fn(context);
     },
+    searchFoundCheck: searchFound => {
+      if (searchFound === false) 
+      return `<img class="search-not-found-img" src="https://img.freepik.com/premium-vector/search-result-find-illustration_585024-17.jpg" alt="">`
+    }
   },
   defaultLayout: 'main', 
   layoutsDir: path.join(__dirname, 'resources/views/layouts'),

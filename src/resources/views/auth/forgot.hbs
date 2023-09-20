@@ -1,0 +1,46 @@
+<form class="form-auth mt-4 mb-5" name="forgot-form">
+    <h2>Forgot</h2>
+    <label for="email">Email</label>
+    <input type="text" name="email" required>
+    <div class="email error"></div>
+    <div class="email inform"></div>
+    <button class="btn-auth-form">Search</button>
+    <hr>
+    <a href="/auth/signup" class="btn-link-auth">Create a new acount</a>
+</form>
+
+<script>
+    const form = document.querySelector('form');
+    const emailError = document.querySelector('.email.error');
+    const emailInform = document.querySelector('.email.inform');
+
+    form.addEventListener('submit', async function (e) {
+        e.preventDefault();
+
+        // reset errors
+        emailError.textContent = '';
+        emailInform.textContent = '';
+
+        // get values
+        const email = form.email.value;
+
+        try {
+            const res = await fetch('/auth/forgot', { 
+                method: 'POST', 
+                body: JSON.stringify({ email }),
+                headers: {'Content-Type': 'application/json'}
+            });
+            const data = await res.json();
+            console.log(data);
+            if (data.errors) {
+                emailError.textContent = data.errors.msg;
+            }
+            if(data.email) {
+                emailInform.textContent = 'Passwordreset link was sent to your email';
+            }
+        }
+        catch (err) {
+            console.log(err);
+        }
+    });
+</script>

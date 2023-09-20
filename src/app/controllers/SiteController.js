@@ -18,7 +18,6 @@ class SiteController {
                 })
             )
             .catch(next);
-
     }
         
     // [GET] /search
@@ -30,21 +29,21 @@ class SiteController {
     postSearch(req, res, next) {
         const page = parseInt(req.query.page) || 1; 
         const perPage = 6;
-
-
+        let searchFound = false;
         Promise.all([Course.find({ owner:res.locals.user, $text: {$search: req.body.courseName} }).skip((perPage*page)-perPage).limit(perPage), 
             Course.countDocuments({ owner:res.locals.user, $text: {$search: req.body.courseName} })])
-            .then(([courses, count]) => 
+            .then(([courses, count]) => {
+                if (courses.length) searchFound = true;
                 res.render('search', {
                     courses: multipleMongooseToObject(courses),
                     current: page,
                     pages: Math.ceil(count / perPage),
                     count,
+                    searchFound,
                 })
-            )
+            })
             .catch(next);
     }
-
 }
 
 module.exports = new SiteController();

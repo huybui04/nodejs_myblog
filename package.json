@@ -41,6 +41,7 @@
     "mongoose": "^7.4.1",
     "mongoose-delete": "^1.0.1",
     "mongoose-slug-generator": "^1.0.4",
+    "nodemailer": "^6.9.5",
     "validator": "^13.11.0"
   },
   "devDependencies": {
