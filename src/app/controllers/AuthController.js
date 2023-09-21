@@ -53,10 +53,10 @@ class AuthController {
  
     // [POST] /auth/signup
     postSignup = async (req, res, next) => {
-        const { email, password } = req.body;
+        const { email, password, confirmPassword } = req.body;
 
         try {
-            const user = await User.create({ email, password });
+            const user = await User.create({ email, password, confirmPassword });
             const token = createToken(user._id);
             res.cookie('jwt', token, { httpOnly: true, maxAge: maxAge * 1000 });
             res.status(201).json({ user: user._id });
@@ -117,7 +117,6 @@ class AuthController {
       await User.findByIdAndUpdate({_id:user._id}, {passwordResetToken:resetToken});
 
       const resetUrl = `http://localhost:3000/auth/resetPassword/${user._id}/${resetToken}`;
-      console.log(resetUrl);
       const message = `We have received a password reset request. Please use this link to reset your password\n
       ${resetUrl}`;
 
@@ -147,28 +146,35 @@ class AuthController {
     // [POST] /auth/resetPassword/:id/:token
     resetPassword = async (req, res, next) => {
       const {id,token} = req.params;
-
+      
       const user = await User.findOne({_id:id, passwordResetToken:token});
 
       if(!user) {
         const err = {
-          errors: {msg:'Token is invalid or has expired'}
+          inform: {expire:'Token is invalid or has expired'}
         }
         return res.status(400).json(err);
       }
 
-      //Reset password
-      user.password = req.body.password;
-      user.confirmPassword = req.body.confirmPassword;
-      user.passwordResetToken = undefined;
-      // user.passwordChangedAt = Date.now;
+      try {
+        //Reset password
 
-      user.save();
+        // user.passwordChangedAt = Date.now;
+        user.password = req.body.password;
+        user.confirmPassword = req.body.confirmPassword;
+        user.passwordResetToken = undefined;
+        await user.save();
+      }
+      catch(err) {
+        const errors = handleErrors(err);
+        return res.status(400).json({ errors });        
+      }        
 
       //Login 
       const loginToken = createToken(user._id);
       res.cookie('jwt', loginToken, { httpOnly: true, maxAge: maxAge * 1000 });
-      res.status(201).json({ user: user._id });
+      res.status(201).json({ user: user._id });   
+
     };
 }
 

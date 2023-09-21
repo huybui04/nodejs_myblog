@@ -19,8 +19,8 @@ const User = mongoose.Schema({
     },
     confirmPassword:{ 
       type:String,
-      required: [true, 'Please enter confirmpassword'],
       minLength: [6, 'Minimum password length is 6 characters'],
+      required: [true, 'Please enter confirmpassword'],
     },
     // passwordChangedAt: { Date },
     passwordResetToken: { String },

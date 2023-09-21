@@ -28,24 +28,28 @@
         const password = form.password.value;
         const confirmPassword = form.confirmPassword.value;
 
-        if(password != confirmPassword) {
-            confirmPasswordError.textContent = 'Password not match';
-            return;
+        if(password!=confirmPassword) {
+            return confirmPasswordError.textContent = 'Confirmpassword not match';
         }
 
+        const resetUrl = window.location.pathname;
+
         try {
-            const res = await fetch('/auth/reset/:id/:token', { 
-                method: 'PATCH', 
+            const res = await fetch(resetUrl, { 
+                method: 'POST', 
                 body: JSON.stringify({ password, confirmPassword }),
                 headers: {'Content-Type': 'application/json'}
             });
             const data = await res.json();
             console.log(data);
             if (data.errors) {
-                passwordInform.textContent = 'Token is invalid or has expired';
                 passwordError.textContent = data.errors.password;
+                confirmPasswordError.textContent = data.errors.confirmPassword;
+            }            
+            if (data.inform) {
+                passwordInform.textContent = data.inform.expire;
             }
-            if(data.email) {
+            if(data.user) {
                 passwordInform.textContent = 'Password was changed';
             }
         }
