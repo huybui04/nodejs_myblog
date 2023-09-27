@@ -3,9 +3,6 @@
   font-size: 22px;
   font-family: 'Quicksand', sans-serif; }
 
-body {
-  background: #fafafa; }
-
 .home_wrapper {
   min-height: 100vh; }
 
@@ -14,6 +11,9 @@ body {
   justify-content: center;
   display: flex;
   margin-top: 10%; }
+
+.card {
+  margin-bottom: 30px; }
 
 .navbar {
   --height: 66px;
@@ -29,6 +29,22 @@ body {
   right: 0;
   top: 0;
   z-index: 20; }
+
+img.logo-header {
+  border-radius: 8px;
+  height: 38px;
+  object-fit: contain;
+  width: 38px; }
+
+.logoheading {
+  display: contents;
+  color: #000;
+  font-size: 15px;
+  font-weight: 700;
+  margin-left: 16px; }
+
+.menubars-wrapper {
+  display: none; }
 
 .user-avatar {
   width: 35px;
@@ -73,6 +89,14 @@ body {
 .checkbox-select-all-options {
   width: 180px;
   margin: 0 16px; }
+
+.notication-icon-wrap {
+  padding: 8px;
+  position: relative; }
+
+.notication-icon-wrap:hover {
+  cursor: pointer;
+  opacity: 0.7; }
 
 .app_sidebar-wrap {
   position: fixed;
@@ -131,6 +155,9 @@ body {
   overflow: hidden;
   padding: 0 44px 74px; }
 
+h5.card-title {
+  font-size: 22px; }
+
 .form-auth {
   width: 360px;
   margin: 0 auto;
@@ -174,6 +201,12 @@ body {
   font-size: 0.8em;
   font-weight: bold; }
 
+.inform {
+  color: #00ff40;
+  margin: 10px 2px;
+  font-size: 0.8em;
+  font-weight: bold; }
+
 .search-not-found-img {
   margin-bottom: 66px;
   width: 100%; }
@@ -181,7 +214,8 @@ body {
 .footer-basic {
   padding: 40px 0;
   background-color: #ffffff;
-  color: #4b4c4d; }
+  color: #4b4c4d;
+  border-top: 1px solid #e8ebed; }
 
 .footer-basic ul {
   padding: 0;
@@ -251,3 +285,19 @@ body {
 
 ::-webkit-scrollbar-thumb:active {
   background: linear-gradient(left, #22ADD4, #1E98BA); }
+
+@media only screen and (max-width: 739px) {
+  .sidebar_wrap {
+    display: none; }
+  img.logo-header, .logoheading {
+    display: none; }
+  .menubars-wrapper {
+    display: block; } }
+
+@media only screen and (min-width: 740px) and (max-width: 1023px) {
+  .sidebar_wrap {
+    display: none; }
+  img.logo-header, .logoheading {
+    display: none; }
+  .menubars-wrapper {
+    display: block; } }

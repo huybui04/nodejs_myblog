@@ -6,10 +6,6 @@
     font-family: 'Quicksand', sans-serif;
 }
 
-body {
-    background: #fafafa;
-}
-
 //
 .home_wrapper {
     min-height: 100vh;
@@ -20,6 +16,10 @@ body {
     justify-content: center;
     display: flex;
     margin-top: 10%;
+}
+
+.card {
+    margin-bottom: 30px;
 }
 
 // Nav
@@ -37,6 +37,25 @@ body {
     right: 0;
     top: 0;
     z-index: 20;
+}
+
+img.logo-header {
+    border-radius: 8px;
+    height: 38px;
+    object-fit: contain;
+    width: 38px;
+}
+
+.logoheading {
+    display: contents;
+    color: #000;
+    font-size: 15px;
+    font-weight: 700;
+    margin-left: 16px;
+}
+
+.menubars-wrapper {
+    display: none;
 }
 
 .user-avatar {
@@ -91,7 +110,15 @@ body {
     margin: 0 16px;
 }
 
+.notication-icon-wrap {
+    padding: 8px;
+    position: relative;
+}
 
+.notication-icon-wrap:hover {
+    cursor: pointer;
+    opacity: 0.7;
+}
 
 // SIde bar 
 .app_sidebar-wrap {
@@ -156,7 +183,11 @@ body {
 // Home
 .home_wrapper {
     overflow: hidden;
-    padding: 0 44px 74px;
+    padding: 0 44px 74px; 
+}
+
+h5.card-title {
+    font-size: 22px;
 }
 
 // Auth form
@@ -225,6 +256,7 @@ body {
     padding:40px 0;
     background-color:#ffffff;
     color:#4b4c4d;
+    border-top: 1px solid #e8ebed;
     // background-color: #181821;
     // color: #a9b3bb;
     // overflow: hidden;
@@ -315,3 +347,33 @@ body {
 ::-webkit-scrollbar-thumb:active{
     background: linear-gradient(left, #22ADD4, #1E98BA);
 }
+
+@media only screen and (max-width:739px){
+    .sidebar_wrap {
+        display: none;
+    }
+
+    img.logo-header,.logoheading {
+        display: none;
+    }
+
+    .menubars-wrapper {
+        display: block;
+    }
+}
+
+@media only screen and (min-width:740px) and (max-width:1023px) {
+    .sidebar_wrap {
+        display: none;
+    }
+
+    img.logo-header,.logoheading {
+        display: none;
+    }
+
+    .menubars-wrapper {
+        display: block;
+    }
+}
+
+
