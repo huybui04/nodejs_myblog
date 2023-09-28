@@ -18,9 +18,18 @@
     margin-top: 10%;
 }
 
+h5.card-title:hover {
+    text-decoration: none;
+}
+
 .card {
     margin-bottom: 30px;
 }
+
+#title-course_link:hover {
+    text-decoration: none;
+}
+
 
 // Nav
 .navbar {
@@ -93,7 +102,7 @@ img.logo-header {
     border:0;
     text-transform: uppercase;
     font-weight: 700;
-    font-size: 0.8em;
+    font-size: 16px;
     display: block;
     padding: 10px 16px;
     letter-spacing: 2px;
@@ -110,6 +119,7 @@ img.logo-header {
     margin: 0 16px;
 }
 
+
 .notication-icon-wrap {
     padding: 8px;
     position: relative;
@@ -118,6 +128,10 @@ img.logo-header {
 .notication-icon-wrap:hover {
     cursor: pointer;
     opacity: 0.7;
+}
+
+.mobile-menu_modal, .mobile-menu_body{
+    display: none;
 }
 
 // SIde bar 
@@ -195,7 +209,7 @@ h5.card-title {
     width: 360px;
     margin: 0 auto;
     padding: 30px;
-    box-shadow: 1px 2px 3px rgba(0,0,0,0.1);
+    box-shadow: 1px 2px 3px rgba(0,0,0,0.3);
     border-radius: 10px;
     background: white;
 }
@@ -257,10 +271,6 @@ h5.card-title {
     background-color:#ffffff;
     color:#4b4c4d;
     border-top: 1px solid #e8ebed;
-    // background-color: #181821;
-    // color: #a9b3bb;
-    // overflow: hidden;
-    // padding: 68px 0 40px;
   }
   
 .footer-basic ul {
@@ -348,18 +358,110 @@ h5.card-title {
     background: linear-gradient(left, #22ADD4, #1E98BA);
 }
 
+//
+
 @media only screen and (max-width:739px){
     .sidebar_wrap {
         display: none;
     }
 
-    img.logo-header,.logoheading {
+    img.logo-header,.logoheading, .navbar-toggler {
         display: none;
     }
 
     .menubars-wrapper {
         display: block;
     }
+
+    .mobile-menu_modal {
+        background-color: rgba(0,0,0,.3);
+        bottom: 0;
+        left: 0;
+        position: fixed;
+        right: 0;
+        top: 0;
+        z-index: 21;
+    }
+
+    .mobile-menu_body {
+        display: block;
+        max-height: 100%;
+        width: 80%;
+        background-color: #fff;
+        overflow-y: scroll;
+    }
+
+    .mobile-menu_container {
+        padding: 16px 0 0 16px;
+        display: flex;
+        flex-direction: column;
+        max-height: 100%;
+    }
+
+    .mobile-menu_user {
+        padding: 16px 0 0 20px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .mobile-menu_avatar_wrapper {
+        position: relative;
+        width: 92px;
+    }
+
+    .user-avatar {
+        height: 80px;
+        object-fit: cover;
+        width: 80px;
+    }
+
+    .mobile-menu_username_wrapper {
+        margin-top: 12px;
+    }
+
+    .mobile-menu_fullname {
+        font-size: 20px;
+        font-weight: 600;
+        margin: 0;
+    }
+
+    .mobile-menu_list_wrapper {
+        margin-top: 24px;
+    }
+    
+    .mobile-menu_list {
+        padding-left: 0;
+        font-size: 20px;
+        font-weight: 400;
+        line-height: 20px;
+        margin: 0 0 12px
+    }
+
+    .mobile-menu_item {
+        font-size: 20px;
+        line-height: 20px;
+        list-style: none;
+    }
+
+    .mobile-menu_list li a {
+        border-bottom-left-radius: 5px;
+        border-top-left-radius: 5px;
+        color: #333;
+        text-decoration: none;
+        cursor: pointer;
+        display: flex;
+        font-size: 20px;
+        font-weight: 500;
+        padding: 16px 0 16px 16px;
+        transition: .3s;
+    }
+
+    .mobile-menubars_tag  {
+        position: relative;
+        top: 2px;
+        left: 20px;
+    }
+
 }
 
 @media only screen and (min-width:740px) and (max-width:1023px) {
@@ -367,13 +469,103 @@ h5.card-title {
         display: none;
     }
 
-    img.logo-header,.logoheading {
+    img.logo-header,.logoheading, .navbar-toggler {
         display: none;
     }
 
     .menubars-wrapper {
         display: block;
     }
+
+    .mobile-menu_modal {
+        background-color: rgba(0,0,0,.3);
+        bottom: 0;
+        left: 0;
+        position: fixed;
+        right: 0;
+        top: 0;
+        z-index: 21;
+    }
+
+    .mobile-menu_body {
+        display: block;
+        max-height: 100%;
+        width: 60%;
+        background-color: #fff;
+        overflow-y: scroll;
+    }
+
+    .mobile-menu_container {
+        padding: 16px 0 0 16px;
+        display: flex;
+        flex-direction: column;
+        max-height: 100%;
+    }
+
+    .mobile-menu_user {
+        padding: 16px 0 0 20px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .mobile-menu_avatar_wrapper {
+        position: relative;
+        width: 92px;
+    }
+
+    .user-avatar {
+        height: 80px;
+        object-fit: cover;
+        width: 80px;
+    }
+
+    .mobile-menu_username_wrapper {
+        margin-top: 12px;
+    }
+
+    .mobile-menu_fullname {
+        font-size: 20px;
+        font-weight: 600;
+        margin: 0;
+    }
+
+    .mobile-menu_list_wrapper {
+        margin-top: 24px;
+    }
+    
+    .mobile-menu_list {
+        padding-left: 0;
+        font-size: 20px;
+        font-weight: 400;
+        line-height: 20px;
+        margin: 0 0 12px
+    }
+
+    .mobile-menu_item {
+        font-size: 20px;
+        line-height: 20px;
+        list-style: none;
+    }
+
+    .mobile-menu_list li a {
+        border-bottom-left-radius: 5px;
+        border-top-left-radius: 5px;
+        color: #333;
+        text-decoration: none;
+        cursor: pointer;
+        display: flex;
+        font-size: 20px;
+        font-weight: 500;
+        padding: 16px 0 16px 16px;
+        transition: .3s;
+    }
+
+    .mobile-menubars_tag  {
+        position: relative;
+        top: 2px;
+        left: 20px;
+    }
+
 }
 
 
