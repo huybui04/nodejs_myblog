@@ -3,6 +3,7 @@ const router = express.Router();
 
 const profileController = require('../app/controllers/ProfileController');
 
+router.get('/edit', profileController.show);
 router.get('/', profileController.index);
 
 

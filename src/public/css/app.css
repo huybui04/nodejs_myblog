@@ -104,6 +104,47 @@ img.logo-header {
   cursor: pointer;
   opacity: 0.7; }
 
+.notication-content-wrapper {
+  display: none;
+  z-index: 9999;
+  width: 29%;
+  position: absolute;
+  inset: 0px 55px auto auto;
+  margin: 0px;
+  transform: translate(-69px, 61px); }
+
+.notication-content-list {
+  animation: fadeIn .3s ease;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 -4px 32px rgba(0, 0, 0, 0.2);
+  color: #1d2129;
+  margin: 0;
+  overflow: hidden;
+  padding-left: 0;
+  transition: all .3s ease-in-out;
+  will-change: opacity,transform; }
+
+.notication-content-list header {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  padding: 16px 20px; }
+
+.notication-content-list header h6 {
+  font-size: 20px; }
+
+.notication-content {
+  max-height: 68vh;
+  overflow-y: auto;
+  overscroll-behavior: contain; }
+
+.notication-content p {
+  color: gray;
+  font-size: 15px;
+  line-height: 18px;
+  padding: 8px 16px; }
+
 .mobile-menu_modal, .mobile-menu_body {
   display: none; }
 
@@ -300,19 +341,19 @@ h5.card-title {
   justify-content: space-between; }
 
 .leftcolumn {
-  border: 2px solid #8cf8f8;
+  border: 2px solid #eefafa;
   display: block;
   width: 25%;
   height: 500px;
-  background-color: #eaeefd;
+  background-color: #fafafcf6;
   border-radius: 20px; }
 
 .rightcolumn {
-  border: 2px solid #8cf8f8;
+  border: 2px solid #eefafa;
   display: block;
   width: 70%;
   height: 500px;
-  background-color: #eaeefd;
+  background-color: #fafafcf6;
   border-radius: 20px; }
 
 .profile-avatar {
@@ -324,6 +365,7 @@ h5.card-title {
   padding: 10px; }
 
 .profile-h2 {
+  margin: 20px;
   font-size: "Arial", sans-serif;
   text-align: center;
   font-size: 30px; }
@@ -356,9 +398,8 @@ h5.card-title {
 
 .profile-btn {
   display: block;
-  background-color: rgba(1, 1, 244, 0.478);
-  color: white;
-  border-radius: 5px;
+  background-color: rgba(1, 1, 244, 0.01);
+  border-radius: 20px;
   font-size: 18px;
   width: 80%;
   height: 60px;
@@ -367,8 +408,7 @@ h5.card-title {
 
 .profile-btn:hover {
   background-color: white;
-  border: 2px solid rgba(1, 1, 244, 0.478);
-  color: rgba(1, 1, 244, 0.478); }
+  opacity: 0.7; }
 
 .profile-table {
   width: 98%;
@@ -390,6 +430,22 @@ h5.card-title {
   float: right;
   margin-top: 20px;
   margin-right: 10px; }
+
+.img-thumbnail {
+  padding: 0; }
+
+.profile-upload-btn {
+  font-size: 15px;
+  height: fit-content;
+  margin-top: 15px; }
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-8px); }
+  100% {
+    opacity: 1;
+    transform: translateY(0); } }
 
 @media only screen and (max-width: 739px) {
   .sidebar_wrap {
