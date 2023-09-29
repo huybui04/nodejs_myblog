@@ -3,11 +3,14 @@ const meRouter = require('./me');
 const courseRouter = require('./courses');
 const siteRouter = require('./site');
 const authRouter = require('./auth');
+const profileRouter = require('./profile');
 
 const { requireAuth, checkUser } = require('../app/middlewares/AuthMiddleware');
 
 function route(app) {
     app.use('/auth', checkUser, authRouter);
+
+    app.use('/profile', requireAuth, checkUser, profileRouter);
 
     app.use('/news', requireAuth, checkUser, newsRouter);
 

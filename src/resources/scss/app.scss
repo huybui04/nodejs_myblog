@@ -358,7 +358,120 @@ h5.card-title {
     background: linear-gradient(left, #22ADD4, #1E98BA);
 }
 
-//
+//Profile
+.profile-body {
+    display: flex;
+    justify-content: space-between;
+}
+
+.leftcolumn{
+    border: 2px solid #8cf8f8;
+    display: block;
+    width: 25%;
+    height: 500px;
+    background-color: #eaeefd;
+    border-radius: 20px;
+}
+
+.rightcolumn {  
+    border: 2px solid #8cf8f8;
+    display: block;
+    width: 70%;  
+    height: 500px;
+    background-color: #eaeefd;  
+    border-radius: 20px;
+}
+
+.profile-avatar {
+    height: 100px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 20px;
+    padding: 10px;    
+}
+
+.profile-h2 {
+    font-size: "Arial", sans-serif;
+    text-align: center;
+    font-size: 30px;
+}
+
+.profile-tag {
+    font-weight: bold;
+    font-size: 22px;
+    padding-left: 10px;
+    font-family: Arial, Helvetica, sans-serif;   
+}
+
+.profile-item {
+
+    list-style-type: none;
+}
+
+.profile-item a{
+    color: black;
+}
+
+.profile-item a:hover{
+    text-decoration: none;
+    color: rgba(1, 1, 244, 0.478);
+}
+
+.profile-link_btn {
+    font-size: 20px;
+    text-decoration: none;
+    color: black;
+    font-family: 'Times New Roman', Times, serif;
+    list-style: none;
+}
+
+.profile-link_btn:hover {
+    text-decoration: none;
+}
+
+.profile-btn {
+    display: block;    
+    background-color: rgba(1, 1, 244, 0.478);
+    color: white;
+    border-radius: 5px;
+    font-size: 18px;
+    width: 80%;
+    height: 60px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.profile-btn:hover {
+    background-color: white;
+    border: 2px solid rgba(1, 1, 244, 0.478);
+    color: rgba(1, 1, 244, 0.478);
+}
+
+.profile-table {
+    width: 98%;
+    margin: 0 auto;
+}
+
+.profile-td {
+    font-family: "Arial", sans-serif;
+    font-size: 18px;
+    border-bottom: 1px dotted #ccc;
+    padding: 10px;    
+}
+
+#infor{
+    text-align: right;
+    font-weight: bold;
+}
+
+#fix{
+    width: 20%;
+    height: 40px;
+    float: right;
+    margin-top: 20px;
+    margin-right: 10px;
+}
 
 @media only screen and (max-width:739px){
     .sidebar_wrap {
@@ -462,6 +575,27 @@ h5.card-title {
         left: 20px;
     }
 
+    //Profile
+    .leftcolumn {
+        display: none;
+    }
+
+    .rightcolumn {
+        width: 100%;  
+        height: fit-content;
+    }
+
+    .profile-btn {
+        font-size: 12px;
+        margin-bottom: 10px;
+    }
+    
+}
+
+@media only screen and (min-width:992px) and (max-width:1023px) {
+    .navbar-expand-lg .navbar-nav {
+        display: none;
+    }
 }
 
 @media only screen and (min-width:740px) and (max-width:1023px) {
@@ -566,6 +700,23 @@ h5.card-title {
         left: 20px;
     }
 
+    //profile
+    .profile-body {
+        display: block;
+    }
+
+    .leftcolumn {
+        width: 100%;
+        margin-bottom: 50px;
+    }
+
+    .rightcolumn {
+        width: 100%;
+    }
+
+    .profile-btn {
+        width: 40%;
+    }
 }
 
 

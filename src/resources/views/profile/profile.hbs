@@ -1,0 +1,34 @@
+<div class="profile-body mt-4 mb-4">
+    <div class="leftcolumn">
+        <img class="profile-avatar" src="https://bookvexe.vn/wp-content/uploads/2023/04/chon-loc-25-avatar-facebook-mac-dinh-chat-nhat_2.jpg" alt="">
+        <h2 class="profile-h2">Vladimir Putin</h2>
+        <p class="profile-tag">Tài khoản của tôi</p>
+        <ul class="profile-list">
+            <li class="profile-item"><a href=""><i class="fa-regular fa-address-card"></i> Thông tin cá nhân</a></li>
+            <li class="profile-item"><a href="/me/stored/courses"><i class="fa-regular fa-newspaper"></i>Khóa học đã đăng</a></li>
+        </ul>
+        <p class="profile-tag">Quà tặng</p> 
+        <ul class="profile-list">
+            <li class="profile-item"><a href=""><i class="fa-solid fa-ticket"></i> Phiếu giảm giá</a></li>
+        </ul>
+        <a  class="profile-link_btn" href="/auth/logout"><button class="profile-btn">Đăng xuất</button></a>
+    </div>
+
+    <div class="rightcolumn">
+        <h2 class="profile-h2">Thông tin cá nhân</h2>
+        <div>
+            <table class="profile-table">
+                <tr>
+                    <td class="profile-td">Tên</td>
+                    <td class="profile-td" id="infor">Vladimir Putin</td>
+                </tr>
+                <tr>
+                    <td class="profile-td">Email</td>
+                    <td class="profile-td" id="infor">{{user.email}}</td>
+                </tr>
+            </table>
+        </div>
+        <a class="profile-link_btn"  href="/auth/forgot"><button class="profile-btn" id="fix">Quên mật khẩu</button></a>
+        <a class="profile-link_btn"  href=""><button class="profile-btn" id="fix">Sửa thông tin</button></a>
+    </div>
+</div>
