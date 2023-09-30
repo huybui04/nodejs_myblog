@@ -445,6 +445,8 @@ h5.card-title {
     font-size: "Arial", sans-serif;
     text-align: center;
     font-size: 30px;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .profile-tag {
@@ -506,6 +508,8 @@ h5.card-title {
     font-size: 18px;
     border-bottom: 1px dotted #ccc;
     padding: 10px;    
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 #infor{

@@ -1,37 +1,43 @@
 <div class="container bootstrap snippets bootdey mt-5 mb-5">
-	<div class="row">
+	<form class="row" action="" method="POST" enctype="multipart/form-data">
         <!-- left column -->
-        <form class="col-md-3">
+        <div class="col-md-3">
             <div class="text-center">
+                {{#if user.avatar}}
+                <img class="avatar img-circle img-thumbnail" src="/{{user.avatar}}" alt="">  
+                {{/if}}             
+                {{#unless user.avatar}}
                 <img class="avatar img-circle img-thumbnail" src="https://bookvexe.vn/wp-content/uploads/2023/04/chon-loc-25-avatar-facebook-mac-dinh-chat-nhat_2.jpg" alt="">
-                <input type="file" class="form-control profile-upload-btn">
+                {{/unless}}
+                <input type="file" class="form-control profile-upload-btn" name="avatar">
             </div>
-        </form>
-      
+        </div>
+
         <!-- edit form column -->
         <div class="col-md-9 personal-info">
             <div class="alert alert-info alert-dismissable">
                 <a class="panel-close close" data-dismiss="alert">×</a> 
                 <i class="fa fa-coffee"></i>
-                This is an <strong>.alert</strong>. Use this to show important messages to the user.
+                <strong>Email</strong> không thể sửa ở đây
             </div>
             <h3>Thông tin cá nhân</h3>
         
-            <form class="form-horizontal" role="form">
+            <div class="form-horizontal">
                 <div class="form-group">
                     <label class="col-lg-3 control-label">User name:</label>
                     <div class="col-lg-8">
-                        <input class="form-control" type="text" value="{{user._id}}">
+                        <input class="form-control" name="name" type="text" value="{{user.name}}">
                     </div>
                 </div>
                 
                 <div class="form-group">
                     <label class="col-lg-3 control-label">Email:</label>
                     <div class="col-lg-8">
-                        <input class="form-control" type="text" value="{{user.email}}">
+                        <input class="form-control" type="text" value="{{user.email}}" disabled="disabled">
                     </div>
                 </div>
-            </form>
+                <button type="submit" class="btn btn-primary">Sửa</button>
+            </div>
         </div>
-    </div>
+    </form>
 </div>

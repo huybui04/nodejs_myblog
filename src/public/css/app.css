@@ -368,7 +368,9 @@ h5.card-title {
   margin: 20px;
   font-size: "Arial", sans-serif;
   text-align: center;
-  font-size: 30px; }
+  font-size: 30px;
+  overflow: hidden;
+  text-overflow: ellipsis; }
 
 .profile-tag {
   font-weight: bold;
@@ -418,7 +420,9 @@ h5.card-title {
   font-family: "Arial", sans-serif;
   font-size: 18px;
   border-bottom: 1px dotted #ccc;
-  padding: 10px; }
+  padding: 10px;
+  overflow: hidden;
+  text-overflow: ellipsis; }
 
 #infor {
   text-align: right;

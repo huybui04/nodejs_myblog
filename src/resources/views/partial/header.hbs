@@ -30,12 +30,27 @@
           </div>
           <li class="nav-item dropdown">
             <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              {{#if user.avatar}}
+              <img src="/{{user.avatar}}" alt="" class="user-avatar">
+              {{/if}}
+              {{#unless user.avatar}}
               <img src="https://bookvexe.vn/wp-content/uploads/2023/04/chon-loc-25-avatar-facebook-mac-dinh-chat-nhat_2.jpg" alt="" class="user-avatar">
+              {{/unless}}
             </button>
             <ul class="dropdown-menu">
               <div class="user-menu">
+                {{#if user.avatar}}
+                <img src="/{{user.avatar}}" alt="" class="user-avatar show">
+                {{/if}}
+                {{#unless user.avatar}}
                 <img src="https://bookvexe.vn/wp-content/uploads/2023/04/chon-loc-25-avatar-facebook-mac-dinh-chat-nhat_2.jpg" alt="" class="user-avatar show">
+                {{/unless}}
+                {{#if user.name}}
+                <div class="user-menu-info">{{user.name}}</div>
+                {{/if}}
+                {{#unless user.name}}
                 <div class="user-menu-info">{{user.email}}</div>
+                {{/unless}}
               </div>
               <li><hr class="dropdown-divider"></li>
               <li><a class="dropdown-item" href="/profile">Trang cá nhân</a></li>              
@@ -46,7 +61,7 @@
               <li><a class="dropdown-item" href="/auth/logout">Đăng xuất</a></li>
             </ul>
           </li>
-          {{/if}}
+        {{/if}}
       </ul>
     </div>
       {{#unless user}}
@@ -59,10 +74,20 @@
     <div class="mobile-menu_container">
       <div class="mobile-menu_user">
         <div class="mobile-menu_avatar_wrapper">
+          {{#if user.avatar}}
+          <img src="/{{user.avatar}}" alt="" class="user-avatar">
+          {{/if}}
+          {{#unless user.avatar}}
           <img src="https://bookvexe.vn/wp-content/uploads/2023/04/chon-loc-25-avatar-facebook-mac-dinh-chat-nhat_2.jpg" alt="" class="user-avatar">
+          {{/unless}}
         </div>
         <div class="mobile-menu_username_wrapper">
+          {{#if user.name}}
+          <span class="mobile-menu_fullname">{{user.name}}</span>
+          {{/if}}
+          {{#unless user.name}}
           <span class="mobile-menu_fullname">{{user.email}}</span>
+          {{/unless}}
         </div>
       </div>
       <hr>

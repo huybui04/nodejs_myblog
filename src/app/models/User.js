@@ -5,6 +5,9 @@ const bcrypt = require('bcrypt');
 const Schema = mongoose.Schema;
 
 const User = mongoose.Schema({
+    name: {
+        type:String,
+    },
     email:{ 
         type:String, 
         required: [true, 'Please enter an email'],
@@ -18,9 +21,12 @@ const User = mongoose.Schema({
         minLength: [6, 'Minimum password length is 6 characters'],
     },
     confirmPassword:{ 
-      type:String,
-      minLength: [6, 'Minimum password length is 6 characters'],
-      required: [true, 'Please enter confirmpassword'],
+        type:String,
+        minLength: [6, 'Minimum password length is 6 characters'],
+        required: [true, 'Please enter confirmpassword'],
+    },
+    avatar: {
+        type:String,
     },
     // passwordChangedAt: { Date },
     passwordResetToken: { String },
