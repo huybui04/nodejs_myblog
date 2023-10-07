@@ -9,14 +9,15 @@ class ProfileController {
         res.render('profile/profile');
     }
 
-    // [GET] /profile/edit
+    // [GET] /profile/edit/:id
     show(req, res, next) {
         res.render('profile/edit');
     }
 
-    // [POST] /profile/edit
-    edit(req, res, next) {
-        req.body.avatar = req.file.path.split('\\').slice(10).join('/');
+    // [POST] /profile/edit/:id
+    edit (req, res, next)  {
+        if (!req.body.avatar) req.body.avatar = '';
+        else req.body.avatar = req.file.path.split('\\').slice(10).join('/');
 
         User.updateOne({  _id : req.params.id }, req.body)
             .then(() => res.redirect('/profile'))

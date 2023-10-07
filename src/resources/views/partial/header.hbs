@@ -40,13 +40,17 @@
             <ul class="dropdown-menu">
               <div class="user-menu">
                 {{#if user.avatar}}
-                <img src="/{{user.avatar}}" alt="" class="user-avatar show">
+                <div class="user-avatar-wrapper">
+                  <img src="/{{user.avatar}}" alt="" class="user-avatar show">
+                </div>
                 {{/if}}
                 {{#unless user.avatar}}
                 <img src="https://bookvexe.vn/wp-content/uploads/2023/04/chon-loc-25-avatar-facebook-mac-dinh-chat-nhat_2.jpg" alt="" class="user-avatar show">
                 {{/unless}}
                 {{#if user.name}}
-                <div class="user-menu-info">{{user.name}}</div>
+                <div class="user-menu-info">
+                  <span class="user-name">{{user.name}}</span>
+                </div>
                 {{/if}}
                 {{#unless user.name}}
                 <div class="user-menu-info">{{user.email}}</div>
@@ -65,7 +69,7 @@
       </ul>
     </div>
       {{#unless user}}
-      <a href="auth/login" class="btn-link-auth">Login</a>
+      <a href="auth/login" class="btn-link-auth">Đăng nhập</a>
       {{/unless}}
 </nav>
 
@@ -94,7 +98,7 @@
       <div class="mobile-menu_list_wrapper">
         <ul class="mobile-menu_list">
           <li class="mobile-menu_item">
-            <a href="">
+            <a href="/profile">
               <div>
                 <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><path d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z"/></svg>
               </div>

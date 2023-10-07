@@ -1,12 +1,12 @@
 <form class="form-auth mt-4 mb-5" name="forgot-form">
-    <h2>Forgot</h2>
+    <h2>Quên mật khẩu</h2>
     <label for="email">Email</label>
     <input type="text" name="email" required>
     <div class="email error"></div>
     <div class="email inform"></div>
     <button class="btn-auth-form">Search</button>
     <hr>
-    <a href="/auth/signup" class="btn-link-auth">Create a new acount</a>
+    <a href="/auth/signup" class="btn-link-auth">Tạo một tài khoản mới</a>
 </form>
 
 <script>
@@ -36,7 +36,7 @@
                 emailError.textContent = data.errors.msg;
             }
             if(data.email) {
-                emailInform.textContent = 'Passwordreset link was sent to your email';
+                emailInform.textContent = 'Liên kết đã được gửi tới email của bạn';
             }
         }
         catch (err) {

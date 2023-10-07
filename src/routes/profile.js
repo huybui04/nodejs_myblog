@@ -14,8 +14,22 @@ const Storage = multer.diskStorage({
     }
 });
 
+const maxSize = 1 * 1024 * 1024;
 const upload = multer({
-    storage:Storage
+    storage: Storage,
+    fileFilter: (req, file, cb) => {
+        if (
+            file.mimetype == "image/png" ||
+            file.mimetype == "image/jpg" ||
+            file.mimetype == "image/jpeg" 
+        ) {
+            cb(null, true);
+        } else {
+            cb(null, false);
+            return cb(new Error('Chỉ .png, .jpg and .jpeg'));
+        }
+    },
+    limits: { fileSize: maxSize },
 }).single('avatar');
 
 router.get('/edit/:id', profileController.show);

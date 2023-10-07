@@ -18,17 +18,17 @@ const handleErrors = (err) => {
   
     // incorrect email
     if (err.message === 'incorrect email') {
-      errors.email = 'That email is not registered';
+      errors.email = 'Email này chưa đăng ký';
     }
   
     // incorrect password
     if (err.message === 'incorrect password') {
-      errors.password = 'That password is incorrect';
+      errors.password = 'Sai mật khẩu';
     }
   
     // duplicate email error
     if (err.code === 11000) {
-      errors.email = 'That email is already registered';
+      errors.email = 'Email này đã đăng ký';
       return errors;
     }
 
@@ -107,7 +107,7 @@ class AuthController {
 
       if(!user) {
         const err = {
-          errors: {msg:'We could not find this user'}
+          errors: {msg:'Không tìm thấy người dùng'}
         }
         return res.status(404).json(err);
       }
@@ -151,7 +151,7 @@ class AuthController {
 
       if(!user) {
         const err = {
-          inform: {expire:'Token is invalid or has expired'}
+          inform: {expire:'Token không hợp lệ hoặc đã hết hạn'}
         }
         return res.status(400).json(err);
       }

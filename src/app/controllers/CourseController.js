@@ -5,10 +5,14 @@ const { multipleMongooseToObject, mongooseToObject } = require('../../ulti/mongo
 class CourseController {
     
     // [GET] /course/:slug
-    show(req, res, next) {
-        Course.findOne({ slug: req.params.slug })
-            .then(course => {
-                res.render('courses/show', { course: mongooseToObject(course) });
+    show = async (req, res, next) =>{
+
+        Promise.all([ Course.find({owner:res.locals.user}).skip(1).limit(4), Course.findOne({ slug: req.params.slug }) ])
+            .then(([recomendCourses, course]) => {
+                res.render('courses/show', { 
+                    recomendCourses: multipleMongooseToObject(recomendCourses),
+                    course: mongooseToObject(course),
+                });
             })
             .catch(next);
     }

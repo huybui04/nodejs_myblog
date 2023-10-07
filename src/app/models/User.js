@@ -10,20 +10,20 @@ const User = mongoose.Schema({
     },
     email:{ 
         type:String, 
-        required: [true, 'Please enter an email'],
+        required: [true, 'Hãy nhập email'],
         unique: true,
         lowercase: true, 
-        validate: [isEmail , 'Please enter an valid email'],
+        validate: [isEmail , 'Hãy nhập email hợp lệ'],
     },
     password:{ 
         type:String,
-        required: [true, 'Please enter an password'],
-        minLength: [6, 'Minimum password length is 6 characters'],
+        required: [true, 'Hãy nhập mật khẩu'],
+        minLength: [6, 'Mật khẩu ít nhất 6 chữ số'],
     },
     confirmPassword:{ 
         type:String,
-        minLength: [6, 'Minimum password length is 6 characters'],
-        required: [true, 'Please enter confirmpassword'],
+        minLength: [6, 'Mật khẩu ít nhất 6 chữ số'],
+        required: [true, 'Hãy xác nhận lại mật khẩu'],
     },
     avatar: {
         type:String,

@@ -1,13 +1,13 @@
 <form class="form-auth mt-4 mb-5" name="login-form">
-    <h2>Reset</h2>
+    <h2>Đặt lại mật khẩu</h2>
     <div class="password inform"></div>
-    <label for="password">Password</label>
+    <label for="password">Mật khẩu</label>
     <input type="password" name="password" required>
     <div class="password error"></div>
-    <label for="confirmPassword">Confirmpassword</label>
+    <label for="confirmPassword">Xác nhận mật khẩu</label>
     <input type="password" name="confirmPassword" required>
     <div class="confirmPassword error"></div>        
-    <button class="btn-auth-form">Send</button>
+    <button class="btn-auth-form">Gửi</button>
 </form>
 
 <script>
@@ -29,7 +29,7 @@
         const confirmPassword = form.confirmPassword.value;
 
         if(password!=confirmPassword) {
-            return confirmPasswordError.textContent = 'Confirmpassword not match';
+            return confirmPasswordError.textContent = 'Mật khẩu xác nhận không khớp';
         }
 
         const resetUrl = window.location.pathname;
@@ -50,7 +50,7 @@
                 passwordInform.textContent = data.inform.expire;
             }
             if(data.user) {
-                passwordInform.textContent = 'Password was changed';
+                passwordInform.textContent = 'Mật khẩu đã được thay đổi';
             }
         }
         catch (err) {
