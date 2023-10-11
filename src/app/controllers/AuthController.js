@@ -164,6 +164,11 @@ class AuthController {
         user.confirmPassword = req.body.confirmPassword;
         user.passwordResetToken = undefined;
         await user.save();
+        const err = {
+          sucess: {msg:'Mật khẩu đã được thay đổi'}
+        }
+        return res.status(200).json(err);
+
       }
       catch(err) {
         const errors = handleErrors(err);
@@ -171,9 +176,9 @@ class AuthController {
       }        
 
       //Login 
-      const loginToken = createToken(user._id);
-      res.cookie('jwt', loginToken, { httpOnly: true, maxAge: maxAge * 1000 });
-      res.status(201).json({ user: user._id });   
+      // const loginToken = createToken(user._id);
+      // res.cookie('jwt', loginToken, { httpOnly: true, maxAge: maxAge * 1000 });
+      // res.status(201).json({ user: user._id });   
 
     };
 }

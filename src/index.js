@@ -64,16 +64,16 @@ app.engine('hbs', engine({
     },
     previousCheck: (current) => {
       if (current === 1) {
-        return `<li class="page-item disabled"><a class="page-link" href="?page=${current -1 }">Previous</a></li>`
+        return `<li class="page-item disabled"><a class="page-link" href="?page=${current -1 }"><</a></li>`
       } else {
-        return `<li class="page-item"><a class="page-link" href="?page=${current - 1}">Previous</a></li>`
+        return `<li class="page-item"><a class="page-link" href="?page=${current - 1}"><</a></li>`
       }
     },
     nextCheck: (current, pages) => {
       if (current === pages) {
-        return `<li class="page-item disabled"><a class="page-link" href="?page=${current + 1}">Next</a></li>`
+        return `<li class="page-item disabled"><a class="page-link" href="?page=${current + 1}">></a></li>`
       } else {
-        return `<li class="page-item"><a class="page-link" href="?page=${current + 1}">Next</a></li>`
+        return `<li class="page-item"><a class="page-link" href="?page=${current + 1}">></a></li>`
       }s
     },
     pagination: (currentPage, totalPage, size, options) => {
@@ -124,6 +124,61 @@ app.engine('hbs', engine({
     searchFoundCheck: searchFound => {
       if (searchFound === false) 
       return `<img class="search-not-found-img" src="https://img.freepik.com/premium-vector/search-result-find-illustration_585024-17.jpg" alt="">`
+    },
+    slideshow: (curr) => {
+      if (curr===1) 
+      return `<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+      <ol class="carousel-indicators">
+        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+      </ol>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+            <div class="slides">
+                <div class="slideshow_wrap w-50">
+                    <h2 class="slideshow-heading">
+                        <a class="slideshow-heading-link" href="">Học ReactJs miễn phí</a>
+                    </h2>
+                    <p class="slieshow-content">Khóa học ReactJS từ cơ bản tới nâng cao. Kết quả của khóa học này là bạn có thể làm hầu hết các dự án thường gặp với ReactJS.</p>
+                </div>
+                <img class="w-50" src="https://files.fullstack.edu.vn/f8-prod/banners/Banner_web_ReactJS.png" alt="First slide">
+            </div>
+        </div>
+        <div class="carousel-item">
+            <div class="slides">
+                <div class="slideshow_wrap w-50">
+                    <h2 class="slideshow-heading">
+                        <a class="slideshow-heading-link" href="https://www.youtube.com/channel/UCNSCWwgW-rwmoE3Yc4WmJhw">F8 trên youtube</a>
+                    </h2>
+                    <p>F8 được nhắc tới ở mọi nơi, ở đâu có cơ hội việc làm cho nghề IT và có những con người yêu thích lập trình F8 sẽ ở đó.</p>
+                </div>
+                <img class="w-50" src="https://files.fullstack.edu.vn/f8-prod/banners/Banner_03_youtube.png" alt="Second slide">
+            </div>
+        </div>
+        <div class="carousel-item">
+            <div class="slides">
+                <div class="slideshow_wrap w-50">
+                    <h2 class="slideshow-heading">
+                        <a class="slideshow-heading-link" href="">F8 trên facebook</a>
+                    </h2>
+                    <p>F8 được nhắc tới ở mọi nơi, ở đâu có cơ hội việc làm cho nghề IT và có những con người yêu thích lập trình F8 sẽ ở đó.</p>
+                </div>
+                <img class="w-50" src="https://files.fullstack.edu.vn/f8-prod/banners/Banner_04_2.png" alt="Third slide">
+            </div>
+        </div>
+      </div>
+      <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
+    `
+    else return;
     }
   },
   defaultLayout: 'main', 

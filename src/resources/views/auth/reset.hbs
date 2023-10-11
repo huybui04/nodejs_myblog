@@ -49,8 +49,8 @@
             if (data.inform) {
                 passwordInform.textContent = data.inform.expire;
             }
-            if(data.user) {
-                passwordInform.textContent = 'Mật khẩu đã được thay đổi';
+            if (data.sucess) {
+                passwordInform.textContent = data.sucess.msg;
             }
         }
         catch (err) {
