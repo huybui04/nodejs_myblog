@@ -9,7 +9,12 @@
 
         <div class="form-group">
             <label for="description">Mô tả</label>
-            <input type="text" class="form-control" value="{{course.description}}" id="description" name="description">
+            <textarea type="text" class="form-control" id="description" name="description">{{course.description}}</textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="docLink">Tài liệu tham khảo</label>
+            <input type="text" class="form-control" value="{{course.docLink}}" id="docLink" name="docLink">
         </div>
 
         <div class="form-group">

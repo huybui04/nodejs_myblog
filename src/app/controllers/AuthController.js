@@ -13,7 +13,6 @@ const createToken = (id) => {
 };
 // Handle errors
 const handleErrors = (err) => {
-    // console.log(err.message, err.code);
     let errors = { email: '', password: '' };
   
     // incorrect email
@@ -36,8 +35,6 @@ const handleErrors = (err) => {
     if (err.message.includes('User validation failed')) {
       console.log(err);
       Object.values(err.errors).forEach(({ properties }) => {
-        // console.log(val);
-        // console.log(properties);
         errors[properties.path] = properties.message;
       });
     }
@@ -159,7 +156,6 @@ class AuthController {
       try {
         //Reset password
 
-        // user.passwordChangedAt = Date.now;
         user.password = req.body.password;
         user.confirmPassword = req.body.confirmPassword;
         user.passwordResetToken = undefined;
@@ -174,11 +170,6 @@ class AuthController {
         const errors = handleErrors(err);
         return res.status(400).json({ errors });        
       }        
-
-      //Login 
-      // const loginToken = createToken(user._id);
-      // res.cookie('jwt', loginToken, { httpOnly: true, maxAge: maxAge * 1000 });
-      // res.status(201).json({ user: user._id });   
 
     };
 }
